@@ -1,5 +1,6 @@
 const appElement = document.getElementById("app");
 let blocks = [];
+let counter = 0;
 
 function renderBlock(block) {
   const { id, color } = block;
@@ -12,7 +13,9 @@ function renderBlock(block) {
     square.className = "square";
     square.id = id;
     square.style.backgroundColor = color;
-    appElement.appendChild(square);
+    setTimeout(() => {
+      appElement.appendChild(square);
+    }, 500);
   }
 }
 
@@ -21,7 +24,8 @@ function render() {
 }
 
 function addBlock() {
-  const id = `block${blocks.length + 1}`;
+  counter++;
+  const id = `block${counter}`;
   const color = getRandomColor();
   blocks.push({ id, color });
   renderBlock(blocks[blocks.length - 1]);

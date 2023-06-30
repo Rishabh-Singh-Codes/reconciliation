@@ -7,12 +7,15 @@ function render() {
     square.className = "square";
     square.id = block.id;
     square.style.backgroundColor = block.color;
-    appElement.appendChild(square);
+    setTimeout(() => {
+      appElement.appendChild(square);
+    }, 500);
   });
 }
 
 function addBlock() {
-  const id = `block${blocks.length + 1}`;
+  counter++;
+  const id = `block${counter}`;
   const color = getRandomColor();
   blocks.push({ id, color });
   render();
@@ -46,4 +49,5 @@ function getRandomColor() {
 }
 
 let blocks = [];
+let counter = 0;
 render();
